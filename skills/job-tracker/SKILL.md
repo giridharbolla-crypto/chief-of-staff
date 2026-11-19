@@ -10,7 +10,7 @@ description: Track job applications in flight and recruiter conversations. Use w
 
 # Inputs
 - Gmail (read-only).
-- Google Doc `cos/job-pipeline.md` (COS maintains this; create if missing).
+- Google Doc "COS – Job pipeline" in Drive (COS maintains this; create if missing).
 
 # Steps
 1. Run the Job applications query from `context/source-index.md` over the
@@ -23,7 +23,7 @@ description: Track job applications in flight and recruiter conversations. Use w
    - Status: `applied` / `recruiter_reached_out` / `screen_scheduled` /
      `interview_scheduled` / `rejected` / `offer` / `ghosted` (>14 days
      silent since last activity)
-3. Update `cos/job-pipeline.md` with any new companies or state changes.
+3. Update the "COS – Job pipeline" doc with any new companies or state changes.
 4. Suggest a next step for each active row:
    - `applied` + silent 7–14 days → "wait"
    - `applied` + silent > 14 days → "consider a short follow-up"

@@ -12,7 +12,8 @@ description: Summarise securities activity across INDmoney (Indian + US stocks),
 - Gmail (read-only).
 - INDmoney connector (read-only): `networth_snapshot`, `networth_holdings`,
   `mf_sips` / `indian_stocks_sips` / `us_stocks_sips`.
-- `memory/portfolio-snapshots.md` — last week's asset-class totals.
+- Google Doc "COS – Portfolio snapshots" (Drive) — last week's asset-type totals.
+  (Seeded from `memory/portfolio-snapshots.md`.)
 - Default window: last 7 days unless user says otherwise. For PMS reports
   and corporate actions, look back 30 days.
 
@@ -29,7 +30,9 @@ description: Summarise securities activity across INDmoney (Indian + US stocks),
    today or tomorrow; any trade with amount unusual for the user
    (define "unusual" as > 2× the 30-day median trade size).
 4. For PMS reports, link the month and note it as unread.
-5. Pull `networth_snapshot`. Compare totals per asset type with the last
+5. De-duplicate: stocks held via Anand Rathi Brokers largely mirror the PMS;
+   count PMS once and only the excess Anand Rathi units.
+   Pull `networth_snapshot`. Compare totals per asset type with the last
    entry in `memory/portfolio-snapshots.md` and report week-on-week change.
    Then append this week's totals (asset-type level only, no holdings) to
    that file with the date.
