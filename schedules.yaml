@@ -1,0 +1,38 @@
+# All times are IST (Asia/Kolkata). Minute values are jittered off the hour
+# to avoid :00 contention.
+
+- name: finance-pulse-weekly
+  skill: finance-pulse
+  cron: "38 7 * * 1"
+  timezone: Asia/Kolkata
+  prompt: |
+    Run the finance-pulse skill for Giridhar over the last 7 days.
+    Output format per the skill. Draft only — do not send any email to banks.
+  delivery: project_chat
+
+- name: portfolio-watch-weekly
+  skill: portfolio-watch
+  cron: "41 7 * * 1"
+  timezone: Asia/Kolkata
+  prompt: |
+    Run the portfolio-watch skill for Giridhar over the last 7 days, plus
+    30 days for PMS and corporate actions.
+    Output format per the skill. Flag any deadlines inside 7 days.
+  delivery: project_chat
+
+- name: job-tracker-weekly
+  skill: job-tracker
+  cron: "38 17 * * 5"
+  timezone: Asia/Kolkata
+  prompt: |
+    Run the job-tracker skill for Giridhar over the last 30 days.
+    Update cos/job-pipeline.md with any state changes. Output the weekly
+    summary per the skill. Draft any suggested follow-up emails as drafts —
+    do not send.
+  delivery: project_chat
+
+# Behaviour when a run hits an approval checkpoint and no one is there to
+# approve: tasks are draft-only by design, so they should complete without
+# needing human approval. If a task ever needs approval, it should save its
+# work-in-progress and stop, then report the blocker at the top of the next
+# scheduled run.
