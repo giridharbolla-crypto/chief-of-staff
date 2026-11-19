@@ -10,6 +10,9 @@ description: Summarise securities activity across INDmoney (Indian + US stocks),
 
 # Inputs
 - Gmail (read-only).
+- INDmoney connector (read-only): `networth_snapshot`, `networth_holdings`,
+  `mf_sips` / `indian_stocks_sips` / `us_stocks_sips`.
+- `memory/portfolio-snapshots.md` — last week's asset-class totals.
 - Default window: last 7 days unless user says otherwise. For PMS reports
   and corporate actions, look back 30 days.
 
@@ -26,6 +29,15 @@ description: Summarise securities activity across INDmoney (Indian + US stocks),
    today or tomorrow; any trade with amount unusual for the user
    (define "unusual" as > 2× the 30-day median trade size).
 4. For PMS reports, link the month and note it as unread.
+5. Pull `networth_snapshot`. Compare totals per asset type with the last
+   entry in `memory/portfolio-snapshots.md` and report week-on-week change.
+   Then append this week's totals (asset-type level only, no holdings) to
+   that file with the date.
+6. Pull `networth_holdings` for IND_STOCK, MF, US_STOCK. Flag ⚠️ any single
+   holding that moved more than 10% on the week or is > 15% of its asset type.
+7. Note SIPs debiting in the next 7 days (one line total, not per SIP).
+8. Observations only — never recommend buying or selling. Never call
+   `save_analysis`.
 
 # Output
 ```
@@ -33,6 +45,10 @@ description: Summarise securities activity across INDmoney (Indian + US stocks),
 
 ### ⚠️ Action needed
 - <e-voting deadline, IPO closing, unusual trade>
+
+### Portfolio (INDmoney)
+- Net worth ₹<x> (<+/-y> vs last week) · Equity <a>% · Retirement <b>% · ...
+- <biggest mover or concentration flag, one line each, max 3>
 
 ### Trades
 <table: Date / Platform / Ticker / Side / Qty / Price / Amount>

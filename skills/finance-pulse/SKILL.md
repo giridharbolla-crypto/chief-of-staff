@@ -9,6 +9,8 @@ description: Summarise HSBC and HDFC account activity over a period. Use when th
 
 # Inputs
 - Gmail (read-only).
+- INDmoney `networth_snapshot` → `liabilities.credit_cards` for card dues
+  and due dates across all linked cards (read-only).
 - Default window: last 7 days unless the user specifies otherwise.
 
 # Steps
@@ -28,6 +30,9 @@ description: Summarise HSBC and HDFC account activity over a period. Use when th
    matching merchant Giridhar would recognise; any payment due in < 48h;
    any home loan rate change (always).
 5. For each charge, pair it with any refund from the same merchant if found.
+6. From INDmoney card dues: list every card with a non-zero due and its due
+   date. Flag ⚠️ any due within 7 days; ⚠️ urgent if within 48h. Show cards
+   as name + last 4 only.
 
 # Output
 ```
@@ -40,6 +45,9 @@ description: Summarise HSBC and HDFC account activity over a period. Use when th
 | Date | Card | Merchant | Amount | Status |
 |---|---|---|---|---|
 ...
+
+### Card dues
+- <card ••last4 — ₹amount — due date>
 
 ### Account notices
 - <rate change, statement availability, etc.>

@@ -6,6 +6,7 @@
 | Google Calendar | daily triage | read-only | personal calendar; mostly empty — work calendar is on Target and not connectable |
 | Google Drive | job-tracker (writes `cos/job-pipeline.md`) | read / write own files | |
 | Google Docs | job-tracker, future goals doc | read / write | |
+| INDmoney | portfolio-watch, finance-pulse (card dues) | read-only | net worth, holdings, allocation, SIPs, credit card dues. Never call `save_analysis`. |
 | Google Sheets | future (finance / portfolio dashboards) | read / write | not used by current skills |
 
 Not available, do not propose connecting:

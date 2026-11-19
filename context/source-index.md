@@ -36,3 +36,17 @@ Plus senders:
 
 Dedupe LinkedIn "View X jobs and your next steps" — those are prompts, not
 applications.
+
+## INDmoney connector (live portfolio data, read-only)
+Use the connector, not emails, for current holdings and values:
+- `networth_snapshot` — totals by asset type, asset-class split, market-cap
+  split of direct stocks, liabilities incl. credit card dues and due dates
+- `networth_holdings` (asset_type IND_STOCK / MF / US_STOCK / PMS ...) —
+  per-holding value, P&L, one-day change
+- `networth_allocation_breakdown` — allocation within one asset type
+- `mf_sips`, `indian_stocks_sips`, `us_stocks_sips` — upcoming SIP debits
+Caveats: Indian stock invested value is only accurate for INDmoney-held
+stocks, so P&L on externally held stocks is unreliable — don't quote it.
+Sector breakdown is not available. Never call `save_analysis`.
+Emails remain the source for trades, contract notes, dividends, PMS reports
+and CDSL/NSDL corporate actions.
