@@ -33,7 +33,7 @@ description: Summarise securities activity across INDmoney (Indian + US stocks),
 5. De-duplicate: stocks held via Anand Rathi Brokers largely mirror the PMS;
    count PMS once and only the excess Anand Rathi units.
    Pull `networth_snapshot`. Compare totals per asset type with the last
-   entry in `memory/portfolio-snapshots.md` and report week-on-week change.
+   entry in the "COS – Portfolio snapshots" doc and report week-on-week change.
    Then append this week's totals (asset-type level only, no holdings) to
    that file with the date.
 6. Pull `networth_holdings` for IND_STOCK, MF, US_STOCK. Flag ⚠️ any single
